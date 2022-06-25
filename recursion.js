@@ -107,17 +107,43 @@ function revString(str,  idx=str.length - 1, reversed="") {
 
 /** gatherStrings: given an object, return an array of all of the string values. */
 
-function gatherStrings(obj) {
+function gatherStrings(obj, outerIdx=0, count=0, strArr=[]) {
 
-  let strArr = [];
+  // let strArr = [];
 
-  for(let item in obj) {
-    if(typeof obj[item] === 'string') {
-      strArr.push(obj[item]);
-    }
-  }
+  // for(let item in obj) {
+  //   if(typeof obj[item] === 'string') {
+  //     strArr.push(obj[item]);
+  //   }
+  // }
   // console.log(strArr)
-  return strArr;
+  // return strArr;[
+    console.log(Object.values(obj))
+
+
+  if(count === obj.length - 1) {
+    console.log(strArr)
+    return strArr;
+  }
+
+  if(typeof obj[outerIdx] === "string") {
+    strArr.push(obj[outerIdx]);
+    outerIdx += 1;
+    count += 1;
+    return gatherStrings(obj, outerIdx, count, strArr)
+  }
+  // else if(typeof obj[outerIdx] === "object") {
+  //   for(let i = 0; i < obj[outerIdx].length; i++) {
+  //     if(typeof obj[outerIdx][i] === 'string') {
+  //       strArr.push(obj[outerIdx][i]);
+  //     }
+  //     outerIdx += 1;
+  //     count += 1;
+  //     console.log(strArr)
+  //     return gatherStrings(obj, outerIdx, count, strArr)
+  //   }
+  // }
+  
 
 }
 
